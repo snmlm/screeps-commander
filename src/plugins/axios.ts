@@ -2,7 +2,7 @@ import axios from 'axios'
 import Qs from 'qs'
 
 const servers: ServerList = {
-    screeps: 'https://screeps-cros.herokuapp.com/https://screeps.com'
+    screeps: 'https://screeps.com'
 }
 
 axios.interceptors.request.use(axiosConfig => {
