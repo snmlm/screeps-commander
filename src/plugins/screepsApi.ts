@@ -78,11 +78,7 @@ export default class ScreepsApi extends Vue {
      */
     getPlayerInfo(token: string): Promise<PlayerInfo> {
         return new Promise((resolve, reject) => {
-            $get('/api/auth/me', {}, {
-                'Content-Type': 'application/octet-stream',
-                'Access-Control-Allow-Origin': '*',
-                'X-token': token
-            }).then(resp => {
+            $get('/api/auth/me', {}, { 'X-token': token }).then(resp => {
                 // console.log('TCL: ScreepsApi -> resp', resp)
                 if (resp.status === 200 && resp.data.ok === 1) resolve({
                     username: resp.data.username,
@@ -159,10 +155,7 @@ export default class ScreepsApi extends Vue {
      */
     getSessionToken(email: string, password: string): Promise<string> {
         return new Promise((resolve, reject) => {
-            $post('/api/auth/signin', { email, password }, {
-                'Content-Type': 'application/octet-stream',
-                'Access-Control-Allow-Origin': '*'
-            }).then(resp => {
+            $post('/api/auth/signin', { email, password }).then(resp => {
                 if (resp.status === 200 && resp.data.ok === 1) resolve(resp.data.token)
                 else reject(new Error(resp.status.toString()))
             }).catch(e => reject(e))

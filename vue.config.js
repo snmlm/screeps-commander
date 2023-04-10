@@ -23,5 +23,19 @@ module.exports = {
         config.resolve.alias
             .set('plugin', resolve(__dirname, './src/plugins'))
             .set('component', resolve(__dirname, './src/components'))
+    },
+    devServer: {
+        proxy: {
+            '/api/auth/me': {
+                target: 'https://screeps.com/api/auth/me', // 这里写要请求的接口地址
+                changeOrigin: true,
+                ws: false
+            },
+            '/api/auth/signin': {
+                target: 'https://screeps.com/api/auth/signin', // 这里写要请求的接口地址
+                changeOrigin: true,
+                ws: false
+            }
+        }
     }
 }
