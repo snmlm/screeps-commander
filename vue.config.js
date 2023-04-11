@@ -26,15 +26,10 @@ module.exports = {
     },
     devServer: {
         proxy: {
-            '/api/auth/me': {
-                target: 'https://screeps.com/api/auth/me', // 这里写要请求的接口地址
+            '/api': {
+                target: 'https://screeps.com', // 这里写要请求的接口地址
                 changeOrigin: true,
-                ws: false
-            },
-            '/api/auth/signin': {
-                target: 'https://screeps.com/api/auth/signin', // 这里写要请求的接口地址
-                changeOrigin: true,
-                ws: false
+                ws: true
             }
         }
     }
